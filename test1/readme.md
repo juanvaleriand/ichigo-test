@@ -23,3 +23,8 @@ Start the server.
 ```bash
   node app.js
 ```
+
+Run unit test.
+```bash
+  npx mocha test
+```

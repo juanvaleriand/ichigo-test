@@ -9,7 +9,7 @@ describe('Generate and fetch rewards', () => {
   it('should generate rewards for a user', (done) => {
     chai
       .request(app)
-      .get('/users/1/rewards?at=2023-11-02T12:00:00Z')
+      .get('/users/1/rewards?at=2023-11-02T00:00:00Z')
       .end((err, res) => {
         res.should.have.status(200);
         res.body.should.be.a('object');

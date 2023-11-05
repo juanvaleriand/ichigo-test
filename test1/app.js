@@ -4,8 +4,7 @@ const app = express();
 
 app.use(bodyParser.json());
 
-// Simpan data pengguna dan reward di memori
-const users = {};
+// Simpan data reward di memori
 const rewards = {};
 
 // Endpoint untuk menghasilkan reward untuk pengguna tertentu
@@ -15,17 +14,22 @@ app.get('/users/:userId/rewards', (req, res) => {
   const rewardsData = [];
 
   // Cek apakah pengguna sudah ada, jika tidak, buat pengguna baru
-  if (!users[userId]) {
-    users[userId] = { id: userId };
+  if (!rewards[userId]) {
+    rewards[userId] = rewardsData
   }
 
   // Generate reward sesuai dengan tanggal yang diberikan
   for (let i = 0; i < 7; i++) {
     const availableAt = new Date(at);
-    availableAt.setDate(at.getDate() - at.getDay() + i);
+    availableAt.setDate(at.getDate() + i);
     const expiresAt = new Date(availableAt);
     expiresAt.setDate(availableAt.getDate() + 1);
-    rewardsData.push({ availableAt, redeemedAt: null, expiresAt });
+    const reward = rewards[userId].find((r) => r.availableAt.getTime() === availableAt.getTime());
+    if (reward) {
+      rewardsData.push(reward)
+    } else {
+      rewardsData.push({ availableAt, redeemedAt: null, expiresAt });
+    }
   }
 
   rewards[userId] = rewardsData;
@@ -56,3 +60,5 @@ const port = 3000;
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
+
+module.exports = app
