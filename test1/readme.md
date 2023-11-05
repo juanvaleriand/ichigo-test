@@ -9,7 +9,7 @@ Clone the project.
 Go to the project directory.
 
 ```bash
-  cd ichigo-test
+  cd ichigo-test/test1
 ```
 
 Install Node.js packages.
