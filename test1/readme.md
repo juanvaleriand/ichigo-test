@@ -3,23 +3,23 @@
 Clone the project.
 
 ```bash
-  git clone https://github.com/juanvaleriand/go-test.git
+  git clone https://github.com/juanvaleriand/ichigo-test.git
 ```
 
 Go to the project directory.
 
 ```bash
-  cd go-test
+  cd ichigo-test
 ```
 
-Install GO packages.
+Install Node.js packages.
 
 ```bash
-  go get github.com/juanvaleriand/go-test
+  npm install
 ```
 
 Start the server.
 
 ```bash
-  go run main.go
+  node app.js
 ```
